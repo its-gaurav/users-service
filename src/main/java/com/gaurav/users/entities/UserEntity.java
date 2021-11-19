@@ -28,8 +28,11 @@ public class UserEntity {
     @Column(name = "contact_number")
     private String contactNumber;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = AddressEntity.class, mappedBy = "userEntity", fetch = FetchType.LAZY)
     private List<AddressEntity> addresses;
+
+    @Column(name = "is_prime")
+    private boolean isPrime;
 
     @Override
     public boolean equals(Object o) {

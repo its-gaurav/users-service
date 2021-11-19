@@ -5,7 +5,7 @@ import com.gaurav.users.domains.User;
 import com.gaurav.users.entities.AddressEntity;
 import com.gaurav.users.entities.UserEntity;
 
-public class CustomMapper {
+public class CustomUserMapper {
 
 
     public static UserEntity map(User user) {

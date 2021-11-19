@@ -21,6 +21,8 @@ public class User {
 
     private List<Address> addresses;
 
+    private boolean isPrime = false;
+
     public User(String name, String contactNumber) {
         this.name = name;
         this.contactNumber = contactNumber;

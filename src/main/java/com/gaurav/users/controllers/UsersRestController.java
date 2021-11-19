@@ -5,14 +5,12 @@ import com.gaurav.users.domains.Address;
 import com.gaurav.users.domains.User;
 import com.gaurav.users.exceptions.AddressNotFoundException;
 import com.gaurav.users.services.AddressesService;
-import com.gaurav.users.services.UsersServiceImpl;
+import com.gaurav.users.services.UsersService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
@@ -22,7 +20,8 @@ import java.util.List;
 public class UsersRestController {
 
     @Autowired
-    private UsersServiceImpl usersService;
+    private UsersService usersService;
+
     @Autowired
     private AddressesService addressesService;
 
@@ -37,7 +36,7 @@ public class UsersRestController {
     }
 
     @PostMapping(path = "/users")
-    public ResponseEntity saveUser(@RequestBody @Valid User user){
+    public ResponseEntity<Object> addUser(@RequestBody @Valid User user){
         log.info("-------- Saving User {} ----------",user);
          Long savedUserId = usersService.saveUser(user);
         URI location = ServletUriComponentsBuilder

@@ -1,0 +1,1 @@
+alter table users add column `is_prime` tinyint(1) default '0';

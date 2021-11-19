@@ -3,7 +3,7 @@ package com.gaurav.users.services;
 import com.gaurav.users.domains.User;
 import com.gaurav.users.entities.UserEntity;
 import com.gaurav.users.exceptions.UserNotFoundException;
-import com.gaurav.users.mappers.CustomMapper;
+import com.gaurav.users.mappers.CustomUserMapper;
 import com.gaurav.users.repositories.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -29,17 +29,17 @@ public class UsersServiceImpl extends UsersService{
                         ));
     }
     public List<User> getAllUsers(){
-        return usersRepository.findAll().stream().map(CustomMapper::map).collect(Collectors.toList());
+        return usersRepository.findAll().stream().map(CustomUserMapper::map).collect(Collectors.toList());
     }
 
     public Long saveUser(User user) {
-        UserEntity userEntity = CustomMapper.map(user);
+        UserEntity userEntity = CustomUserMapper.map(user);
         usersRepository.save(userEntity);
         return userEntity.getId();
     }
 
     public User getUserById(Long userId) {
-        return usersRepository.findById(userId).map(CustomMapper::map)
+        return usersRepository.findById(userId).map(CustomUserMapper::map)
                 .orElseThrow(()-> new UserNotFoundException("Invalid User Id"));
     }
 }

@@ -6,11 +6,11 @@ import java.util.List;
 
 public abstract class UsersService {
 
-    abstract List<User> getAllUsers();
+    public abstract List<User> getAllUsers();
 
-    abstract Long saveUser(User user);
+    public abstract Long saveUser(User user);
 
-    abstract User getUserById(Long userId);
+    public abstract User getUserById(Long userId);
 
 
 }
